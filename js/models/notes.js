@@ -13,3 +13,4 @@ export class Note extends NoteBase {
     }
 
 }
+
