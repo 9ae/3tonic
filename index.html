@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="tritonic">
+<head>
+    <title>Tritonic</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="libs/Tone.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+<button type="button" onClick="playTest()">Play</button>
+<div ng-controller="KeyMatrixCtrl">
+<h1>{{ $scope.notes[0] }}</h1>
+</div>
+</body>
+</html>
