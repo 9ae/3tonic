@@ -1,0 +1,3 @@
+<div class="note-row" ng-repeat="i in getOctaves(1,8)">
+	<button type="button" class="play-note" ng-repeat="n in notes" ng-click="playNote(n,i)">{{ n }}<sup>{{ i }}</sup></button>
+</div>
