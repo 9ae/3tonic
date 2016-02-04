@@ -7,7 +7,7 @@ class FlowTrack(Track):
     def __init__(self, instrument=None):
         super(FlowTrack, self).__init__(instrument)
         if type(instrument) is Piano:
-            fluidsynth.init('grand_piano.sf2')
+            fluidsynth.init('soundfonts/grand_piano.sf2')
 
     def print_and_play(self):
         for n in self.get_notes():
