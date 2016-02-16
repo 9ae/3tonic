@@ -2,6 +2,7 @@
 
 <Tritonic>:
 
+
     BoxLayout:
         orientation: 'vertical'
         width: 800
@@ -20,4 +21,14 @@
 
         BoxLayout:
             orientation: 'horizontal'
-            
+
+            Label:
+                text: "Chords"
+
+            TextInput:
+                id: input_chords
+                focus: false
+
+        StackLayout:
+            id: chords_shown
+            orientation: 'lr-tb'
