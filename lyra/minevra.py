@@ -10,7 +10,7 @@ from ext import (
     PianoTrack)
 from randy import Randy
 
-def simple_3chords_piano(k=None):
+def simple_3chords_piano(p, k=None):
     if k is None:
         k = Randy.key()
 
@@ -18,7 +18,7 @@ def simple_3chords_piano(k=None):
 
     riff = PianoTrack()
 
-    chord_prog = prog.to_chords(['I', 'IV', 'V', 'I'], k)
+    chord_prog = prog.to_chords(p, k)
     for ch in chord_prog:
         ic = Randy.invert(ch)
         riff.add_chord(ic)
@@ -26,7 +26,7 @@ def simple_3chords_piano(k=None):
     riff.set_as_split_chords()
     riff.print_and_play()
 
-def simple_3chords_guitar(k=None):
+def simple_3chords_guitar(p, k=None):
     if k is None:
         k = Randy.key()
 
@@ -34,12 +34,13 @@ def simple_3chords_guitar(k=None):
 
     riff = GuitarTrack()
 
-    chord_prog = prog.to_chords(['I', 'IV', 'V', 'I'], k)
+    chord_prog = prog.to_chords(p, k)
     for ch in chord_prog:
         ic = Randy.invert(ch)
         riff.add_chord(ic)
 
     riff.set_as_beat_strum()
+    riff.transpose("12", up=False)
     #riff.from_chords(['Am','Dm',['G', 'G7']], 0.25)
     riff.print_and_play()
 
@@ -90,4 +91,4 @@ def fib_song():
     comp.add_track(fib_seq(offset=8))
     fluidsynth.play_Composition(comp)
 
-fib_song()
+simple_3chords_guitar(['I','I','I','I','IV','IV','I','I','V','IV','I','V'],'C#')

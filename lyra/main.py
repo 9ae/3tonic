@@ -2,7 +2,7 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 
 class Tritonic(Widget):
-    pass
+    print c
 
 class TritonicApp(App):
 
