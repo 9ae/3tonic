@@ -91,4 +91,4 @@ def fib_song():
     comp.add_track(fib_seq(offset=8))
     fluidsynth.play_Composition(comp)
 
-simple_3chords_guitar(['I','I','I','I','IV','IV','I','I','V','IV','I','V'],'C#')
+simple_3chords_guitar(['I','IV','I','I','V','IV','I','V'],'A')
