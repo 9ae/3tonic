@@ -18,6 +18,16 @@ app.controller('MCtrl', ['$scope', 'Play', 'Theory', function($scope, Play, Theo
         'vii': null
     };
 
+    $scope.chordStyle = {
+        'I': 'M',
+        'ii': 'M',
+        'iii': 'M',
+        'IV': 'M',
+        'V': 'M',
+        'vi': 'M',
+        'vii': 'M'
+    };
+
     $scope.play = function(){
         Play.play([48, 52, 55], 127, 5);
     };
@@ -35,8 +45,9 @@ app.controller('MCtrl', ['$scope', 'Play', 'Theory', function($scope, Play, Theo
     };
 
     $scope.tryChord = function(roman){
-        var chord = Theory.chord($scope.scale[roman]);
-        console.log(chord);
+        var chord = Theory.chord($scope.scale[roman], $scope.chordStyle[roman]);
+        chord = chord.map(function(e){ return e.midi(); });
+        Play.play(chord, 127, 4);
     }
 
     Play.init("acoustic_grand_piano");

@@ -14,7 +14,7 @@
         .roman-cell {
             display: inline-block;
             padding: 10px;
-            width: 50px;
+            width: 100px;
         }
     </style>
 </head>
@@ -28,9 +28,7 @@
 <div>
     <label>Octave</label>
     <input type="number" ng-model="octave" min="0" max="8"></input>
-</div>
 
-<div>
     <label>Key</label>
     <select ng-model="key" ng-options="k for k in keys" ng-change="onKeyScaleChange()"></select>
 
@@ -43,6 +41,16 @@
     <div class="roman-cell" ng-repeat="(key, value) in scale">
         <button type="button" ng-click="tryChord(key)">{{key}}</button><br />
         <label>{{value}}</label>
+
+        <select ng-model="chordStyle[key]">
+            <option value="M">major</option>
+            <option value="m">minor</option>
+            <option value="aug">augmented</option>
+            <option value="dim">diminished</option>
+            <option value="7b5">half-diminished</option>
+            <option value="5">power</option>
+            <option value="7">dominant</option>
+        </select>
     </div>
 </div>
 

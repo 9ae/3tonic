@@ -31,4 +31,4 @@ Bridge:
 - Bridge centers around IV for contrast
 - V at the end of the bridge makes an easy lead back to the verse or chorus
 
-Turn arounds: rhythmi urgency of turnarounds at slower speeds is weaker
+Turn arounds: rhythmic urgency of turnarounds at slower speeds is weaker

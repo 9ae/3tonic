@@ -17,7 +17,7 @@ angular.module('tritonic.midi').factory('Play', function(){
             throw "Player not ready";
         }
 
-        if (typeof(noteChord) === 'string'){
+        if (typeof(noteChord) === 'number'){
             MIDI.noteOn(0, noteChord, velocity, 0);
             MIDI.noteOff(0, noteChord, duration);
         } else {
