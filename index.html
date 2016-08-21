@@ -1,14 +1,60 @@
 <!DOCTYPE html>
-<html ng-app="tritonic">
+<html ng-app="tritonic.midi">
 <head>
     <title>Tritonic</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-    <script type="text/javascript" src="libs/Tone.min.js"></script> 
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/directives/keymatrix.js"></script>
-    <link rel="stylesheet" type="text/css" href="main.css" />
+    <script type="text/javascript" src="libs/base64-binary.js"></script> 
+    <script type="text/javascript" src="libs/MIDI.js"></script>
+    <script type="text/javascript" src="libs/teoria.js"></script>
+
+    <script type="text/javascript" src="js/md.js"></script>
+    <script type="text/javascript" src="js/services/theory.js"></script>
+    <script type="text/javascript" src="js/services/play.js"></script>
+    <style type="text/css">
+        .roman-cell {
+            display: inline-block;
+            padding: 10px;
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
-<key-matrix>
+
+<div ng-controller="MCtrl">
+<div>    
+    <button type="button" ng-click="play()">Play</button>
+</div>
+
+<div>
+    <label>Octave</label>
+    <input type="number" ng-model="octave" min="0" max="8"></input>
+
+    <label>Key</label>
+    <select ng-model="key" ng-options="k for k in keys" ng-change="onKeyScaleChange()"></select>
+
+    <label>Scale</label>
+    <select ng-model="scaleStyle" ng-options="s for s in scaleStyles"
+    ng-change="onKeyScaleChange()"></select>
+</div>
+
+<div class="keys-in-scale">
+    <div class="roman-cell" ng-repeat="(key, value) in scale">
+        <button type="button" ng-click="tryChord(key)">{{key}}</button><br />
+        <label>{{value}}</label>
+
+        <select ng-model="chordStyle[key]">
+            <option value="M">major</option>
+            <option value="m">minor</option>
+            <option value="aug">augmented</option>
+            <option value="dim">diminished</option>
+            <option value="7b5">half-diminished</option>
+            <option value="5">power</option>
+            <option value="7">dominant</option>
+        </select>
+    </div>
+</div>
+
+</div>
+
 </body>
 </html>
