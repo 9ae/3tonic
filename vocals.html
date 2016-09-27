@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="tritonic.midi">
+<head>
+    <title>Tritonic</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="libs/base64-binary.js"></script> 
+    <script type="text/javascript" src="libs/MIDI.js"></script>
+    <script type="text/javascript" src="libs/teoria.js"></script>
+    <script type="text/javascript" src="js/models/notes.js"></script>
+    <script type="text/javascript" src="js/vocals.js"></script>
+    <script type="text/javascript" src="js/services/theory.js"></script>
+    <script type="text/javascript" src="js/services/play.js"></script>
+    <style type="text/css">
+      
+    </style>
+</head>
+<body ng-controller="VocalsCtrl">
+
+<button ng-click="justPlay()">NOW</button>
+<button ng-click="higher()">Higher</button>
+<button ng-click="lower()">Lower</button>
+<button ng-click="half()">Half</button>
+<button ng-click="double()">Double</button>
+
+</div>
+
+</body>
+</html>
