@@ -3,11 +3,15 @@ angular.module('tritonic.midi').factory('Play', function(){
         ready: false
     };
 
-    player.init = function(instrument){
+    player.init = function(instrument, callback){
         MIDI.loadPlugin({
             instrument: instrument,
             onsuccess: function() {
                 player.ready = true;
+
+                if(typeof callback !== 'undefined'){
+                  callback();
+                }
             }
         });
     };

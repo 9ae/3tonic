@@ -28,12 +28,16 @@ app.controller('MCtrl', ['$scope', 'Play', 'Theory', function($scope, Play, Theo
         'vii': 'M'
     };
 
+    $scope.scalesRaw = function(){
+      return Theory.scalesForKey($scope.key, $scope.scaleStyle);
+    }
+
     $scope.play = function(){
         Play.play([48, 52, 55], 127, 5);
     };
 
     $scope.onKeyScaleChange = function(){
-        var scalesRaw = Theory.scalesForKey($scope.key, $scope.scaleStyle);
+        var scalesRaw = $scope.scalesRaw();
         $scope.scale['I'] = scalesRaw[0];
         $scope.scale['ii'] = scalesRaw[1];
         $scope.scale['iii'] = scalesRaw[2];
@@ -50,7 +54,18 @@ app.controller('MCtrl', ['$scope', 'Play', 'Theory', function($scope, Play, Theo
         Play.play(chord, 127, 4);
     }
 
-    Play.init("acoustic_grand_piano");
+    Play.init("acoustic_grand_piano", function(){
+      var socket = io.connect('localhost:3000');
+      socket.on('connect', function(){ console.log('yo it works') });
+      socket.on('serial', function(msg) {
+        var int = parseInt(msg);
+        if (int >=0 && int < 7) {
+          var keys = Object.keys($scope.scale);
+          var roman = keys[int];
+          $scope.tryChord(roman);
+        }
+      });
+    });
     $scope.onKeyScaleChange();
 
 }]);
